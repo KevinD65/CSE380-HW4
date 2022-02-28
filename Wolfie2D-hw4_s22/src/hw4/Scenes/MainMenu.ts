@@ -87,6 +87,48 @@ export default class MainMenu extends Scene {
 
             Additionally, on the main menu, you should be able to press a button to reach the controls screen.
         */
+       //ADD CONTROL BUTTON
+        const control = this.add.uiElement(UIElementType.BUTTON, "mainMenu", {position: new Vec2(center.x, center.y), text: "Controls"});
+        control.size.set(200, 50);
+        control.borderWidth = 2;
+        control.borderColor = Color.WHITE;
+        control.backgroundColor = Color.TRANSPARENT;
+        control.onClickEventId = "control";
+
+        //CONTROL SCREEN
+        this.control = this.addUILayer("control");
+        this.control.setHidden(true);
+
+        //LABEL AT THE TOP OF THE CONTROL SCREEN
+        const controlHeader = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y - 250), text: "Control"});
+        controlHeader.textColor = Color.WHITE;
+
+        //CONTROL SCREEN TEXT INFORMATION
+        const ctext1 = "Right Click: Move the selected player to the clicked point on the screen";
+        const ctext2 = "E: Pick up an item from the ground";
+        const ctext3 = "Q: Drop the current item on the ground";
+        const ctext4 = "1|2: Keys to equip an inventory item";
+        const ctext5 = "Z|X: Keys to swap between player characters";
+
+        const cline1 = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y - 50), text: ctext1});
+        const cline2 = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y), text: ctext2});
+        const cline3 = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y + 50), text: ctext3});
+        const cline4 = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y + 100), text: ctext4});
+        const cline5 = <Label>this.add.uiElement(UIElementType.LABEL, "control", {position: new Vec2(center.x, center.y + 150), text: ctext5});
+
+        cline1.textColor = Color.WHITE;
+        cline2.textColor = Color.WHITE;
+        cline3.textColor = Color.WHITE;
+        cline4.textColor = Color.WHITE;
+        cline5.textColor = Color.WHITE;
+
+        //ADD BACK (RETURN TO MENU) BUTTON ON MAIN MENU SCREEN
+        const aboutBack2 = this.add.uiElement(UIElementType.BUTTON, "control", {position: new Vec2(center.x, center.y + 250), text: "Back"});
+        aboutBack2.size.set(200, 50);
+        aboutBack2.borderWidth = 2;
+        aboutBack2.borderColor = Color.WHITE;
+        aboutBack2.backgroundColor = Color.TRANSPARENT;
+        aboutBack2.onClickEventId = "menu";
     }
 
     updateScene(){
