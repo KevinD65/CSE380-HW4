@@ -69,7 +69,7 @@ export default class MainMenu extends Scene {
         this.receiver.subscribe("menu");
         this.receiver.subscribe("control");
 
-        // HOMEWORK 4 - TODO
+        // HOMEWORK 4 - TODO (DONE)
         /*
             Add a controls screen here.
             Use the About screen as inspiration for how to do so.
