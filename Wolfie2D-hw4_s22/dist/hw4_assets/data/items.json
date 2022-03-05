@@ -72,6 +72,56 @@
             "type": "weapon",
             "weaponType": "pistol", 
             "position": [56, 984]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [1664, 192]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [1568, 1472]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [1856, 1568]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [1088, 1184]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "pistol", 
+            "position": [736, 224]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "laserGun", 
+            "position": [992, 224]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "laserGun", 
+            "position": [1792, 1088]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "laserGun", 
+            "position": [1344, 1088]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "laserGun", 
+            "position": [800, 1120]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "laserGun", 
+            "position": [1088, 1824]
         }
     ]
 }
