@@ -1,0 +1,145 @@
+{
+  "numEnemies": 20,
+  "enemies": [
+    {
+      "position": [64, 64],
+      "mode": "patrol",
+      "route": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "health": 8,
+      "type": "gun_enemy"
+    },
+    {
+      "position": [256, 544],
+      "mode": "patrol",
+      "route": [62, 63, 64, 65, 66, 67],
+      "health": 8,
+      "type": "gun_enemy"
+    },
+    {
+      "position": [288, 992],
+      "mode": "patrol",
+      "route": [68, 69, 70, 71],
+      "health": 8,
+      "type": "gun_enemy"
+    },
+    {
+      "position": [1504, 1216],
+      "mode": "patrol",
+      "route": [105, 106],
+      "health": 8,
+      "type": "gun_enemy"
+    },
+    {
+      "position": [1760, 1216],
+      "mode": "patrol",
+      "route": [107, 108],
+      "health": 8,
+      "type": "gun_enemy"
+    },
+    {
+      "position": [672, 1248],
+      "mode": "patrol",
+      "route": [72, 73, 74, 75, 76, 77, 78],
+      "health": 5,
+      "type": "knife_enemy"
+    },
+    {
+      "position": [1312, 1760],
+      "mode": "patrol",
+      "route": [81, 82],
+      "health": 5,
+      "type": "knife_enemy"
+    },
+    {
+      "position": [1728, 1472],
+      "mode": "patrol",
+      "route": [83, 84],
+      "health": 5,
+      "type": "knife_enemy"
+    },
+    {
+      "position": [1472, 1408],
+      "mode": "patrol",
+      "route": [85, 86, 87, 88],
+      "health": 5,
+      "type": "knife_enemy"
+    },
+    {
+      "position": [1792, 1696],
+      "mode": "patrol",
+      "route": [91, 92],
+      "health": 5,
+      "type": "knife_enemy"
+    },
+    {
+      "position": [1632, 1792],
+      "mode": "guard",
+      "guardPosition": [1632, 1792],
+      "health": 10,
+      "type": "custom_enemy1"
+    },
+    {
+      "position": [1472, 128],
+      "mode": "guard",
+      "guardPosition": [1472, 128],
+      "health": 10,
+      "type": "custom_enemy1"
+    },
+    {
+      "position": [1568, 288],
+      "mode": "guard",
+      "guardPosition": [1568, 288],
+      "health": 10,
+      "type": "custom_enemy1"
+    },
+    {
+      "position": [1536, 480],
+      "mode": "guard",
+      "guardPosition": [1536, 480],
+      "health": 10,
+      "type": "custom_enemy1"
+    },
+    {
+      "position": [608, 1056],
+      "mode": "guard",
+      "guardPosition": [608, 1056],
+      "health": 5,
+      "type": "custom_enemy1"
+    },
+    {
+      "position": [1952, 1952],
+      "mode": "guard",
+      "guardPosition": [1952, 1952],
+      "health": 8,
+      "type": "custom_enemy2"
+    },
+    {
+      "position": [1184, 768],
+      "mode": "guard",
+      "guardPosition": [1184, 768],
+      "health": 8,
+      "type": "custom_enemy2"
+    },
+    {
+      "position": [1056, 1696],
+      "mode": "guard",
+      "guardPosition": [1056, 1696],
+      "health": 8,
+      "type": "custom_enemy2"
+    },
+    {
+      "position": [1088, 1696],
+      "mode": "guard",
+      "guardPosition": [1088, 1696],
+      "health": 8,
+      "type": "custom_enemy2"
+    },
+    {
+      "position": [1952, 64],
+      "mode": "guard",
+      "guardPosition": [1952, 64],
+      "health": 8,
+      "type": "custom_enemy2"
+    }
+  ]
+}

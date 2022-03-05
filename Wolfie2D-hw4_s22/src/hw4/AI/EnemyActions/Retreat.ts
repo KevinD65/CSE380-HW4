@@ -4,7 +4,7 @@ import Vec2 from "../../../Wolfie2D/DataTypes/Vec2";
 import Emitter from "../../../Wolfie2D/Events/Emitter";
 import GameNode from "../../../Wolfie2D/Nodes/GameNode";
 import NavigationPath from "../../../Wolfie2D/Pathfinding/NavigationPath";
-import { hw4_Names } from "../../hw4_constants";
+import { hw4_Names, hw4_Statuses } from "../../hw4_constants";
 import EnemyAI from "../EnemyAI";
 
 export default class Retreat extends GoapAction {
@@ -33,6 +33,27 @@ export default class Retreat extends GoapAction {
      * as far away as possible.
      */
     performAction(statuses: Array<string>, actor: StateMachineGoapAI, deltaT: number, target?: StateMachineGoapAI): Array<string> {
+        if(this.checkPreconditions(statuses)){
+            let injuredEnemy = <EnemyAI>actor;
+            //let injuredEnemyHealth = injuredEnemy.health;
+            let injuredEnemyPosition = injuredEnemy.lastPlayerPos;
+            let playerPosition = injuredEnemy.lastPlayerPos;
+            let distBetween = Math.sqrt(Math.pow(playerPosition.x - injuredEnemyPosition.x, 2) + Math.pow(playerPosition.y - injuredEnemyPosition.y, 2));
+
+            if(injuredEnemy.currentStatus.includes(hw4_Statuses.LOW_HEALTH)){ //IF WE ARE NOT INJURED, DON'T RETREAT
+                return null;
+            }
+            else if(distBetween >= this.retreatDistance){ //IF WE HAVE MOVED FAR ENOUGH AWAY, STOP RETREATING
+                injuredEnemy.health = injuredEnemy.maxHealth; //RESET TO MAX HEALTH
+                return this.effects;
+            }
+            
+            //OTHERWISE, MOVE IN THE OPPOSITE DIRECTION OF THE PLAYER
+            this.path = injuredEnemy.retreatPath;
+            //injuredEnemy.owner.rotation = Vec2.UP.angleToCCW(this.path.getMoveDirection(injuredEnemy.owner));
+            injuredEnemy.owner.moveOnPath(injuredEnemy.speed * deltaT, this.path);
+            return null;
+        }
         return null;
     }
 

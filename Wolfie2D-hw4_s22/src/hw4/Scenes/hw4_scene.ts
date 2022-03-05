@@ -81,7 +81,7 @@ export default class hw4_scene extends Scene {
         this.load.object("navmesh", "hw4_assets/data/CSE380Navmesh.json");
 
         // Load in the enemy info
-        this.load.object("enemyData", "hw4_assets/data/enemy.json");
+        this.load.object("enemyData", "hw4_assets/data/TestEnemyJSON.json");
 
         // Load in item info
         this.load.object("itemData", "hw4_assets/data/items.json");
@@ -96,7 +96,7 @@ export default class hw4_scene extends Scene {
     }
 
     startScene(){
-        // HOMEWORK 4 - TODO
+        // HOMEWORK 4 - TODO (DONE)
         /*
             Modify this line if needed.
             
@@ -206,7 +206,7 @@ export default class hw4_scene extends Scene {
         let health2 = (<BattlerAI>this.playerCharacters[1]._ai).health;
 
         //If both are dead, game over
-        if(health1 === 0 && health2 === 0){
+        if(health1 <= 0 || health2 <= 0){
             this.sceneManager.changeToScene(GameOver);
         }
 
@@ -489,11 +489,23 @@ export default class hw4_scene extends Scene {
          */
         let actionsGun = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
         new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 100}),
-        new Retreat(1, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200})];
+        new Retreat(1, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
+        new Berserk(3, [hw4_Statuses.CAN_BERSERK], [])];
 
         let actionKnife = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
         new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 20}),
-        new Retreat(4, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200})];
+        new Retreat(4, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
+        new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [])];
+
+        let actionCrazed = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
+        new Move(2, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.IN_RANGE], {inRange: 100}),
+        new Retreat(5, [], [hw4_Statuses.CAN_RETREAT], {retreatDistance: 200}),
+        new Berserk(3, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.CAN_BERSERK])];
+
+        let actionAmbush = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
+        new Move(2, [hw4_Statuses.LOW_HEALTH], [hw4_Statuses.IN_RANGE], {inRange: 20}),
+        new Retreat(5, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
+        new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
 
         // HOMEWORK 4 - TODO
@@ -544,7 +556,7 @@ export default class hw4_scene extends Scene {
             let weapon;
             let actions;
             let range;
-            // HOMEWORK 4 - TODO
+            // HOMEWORK 4 - TODO (DONE)
             /**
              * Once you've set up the actions for your custom enemy types, assign them here so they'll be spawned in your game.
              * They can have any weapons you want.
@@ -563,10 +575,14 @@ export default class hw4_scene extends Scene {
                 range = 20;
             }
             else if (data.type === "custom_enemy1") {
-                //ADD CODE HERE
+                weapon = this.createWeapon("weak_pistol")
+                actions = actionCrazed;
+                range = 100;
             }
             else if (data.type === "custom_enemy2") {
-                //ADD CODE HERE
+                weapon = this.createWeapon("knife")
+                actions = actionAmbush;
+                range = 20;
             }
 
             let enemyOptions = {

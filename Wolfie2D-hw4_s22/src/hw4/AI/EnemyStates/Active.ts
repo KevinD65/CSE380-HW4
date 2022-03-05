@@ -47,7 +47,8 @@ export default class Active extends EnemyState {
      * You'll have to implement this function so you can use retreatPath in the Retreat action.
      */
     pickRetreatPath(pathToPlayer: NavigationPath){
-
+        //let ptpDirection = pathToPlayer.getMoveDirection(this.parent.playerPos);
+        //let oppositeDir = new Vec2(ptpDirection.x * -1, ptpDirection.y * -1);
     }
 
     update(deltaT: number): void {
