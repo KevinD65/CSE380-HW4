@@ -47,8 +47,29 @@ export default class Active extends EnemyState {
      * You'll have to implement this function so you can use retreatPath in the Retreat action.
      */
     pickRetreatPath(pathToPlayer: NavigationPath){
-        //let ptpDirection = pathToPlayer.getMoveDirection(this.parent.playerPos);
-        //let oppositeDir = new Vec2(ptpDirection.x * -1, ptpDirection.y * -1);
+
+        //create node for enemyAI and find direction to owner
+
+
+        let playerDirection = pathToPlayer.getMoveDirection(this.owner); //obtain the move direction of the player
+        let retreatDirection = new Vec2(playerDirection.x, playerDirection.y)
+        let retreatPoint = new Vec2(this.owner.position.x, this.owner.position.y)
+
+        if(retreatDirection.x > 0){
+            retreatPoint.x += 100
+        }
+        else{
+            retreatPoint.x -= 100
+        }
+
+        if(retreatDirection.y > 0){
+            retreatPoint.y += 100
+        }
+        else{
+            retreatPoint.y -= 100
+        }
+
+        this.parent.retreatPath = this.owner.getScene().getNavigationManager().getPath(hw4_Names.NAVMESH, this.owner.position, retreatPoint, true);
     }
 
     update(deltaT: number): void {

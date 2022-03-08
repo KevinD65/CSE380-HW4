@@ -454,7 +454,7 @@ export default class hw4_scene extends Scene {
         // Create an enemies array
         this.enemies = new Array(enemyData.numEnemies);
 
-        // HOMEWORK 4 - TODO
+        // HOMEWORK 4 - TODO (DONE)
         /**
          * Here we have the current actions that are given to the two existing enemy types, the gun enemy and knife enemy. 
          * Both AI will look to move towards a player and attack once in range at the start, trying to get the 
@@ -498,12 +498,12 @@ export default class hw4_scene extends Scene {
         new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [])];
 
         let actionCrazed = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
-        new Move(2, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.IN_RANGE], {inRange: 100}),
-        new Retreat(5, [], [hw4_Statuses.CAN_RETREAT], {retreatDistance: 200}),
+        new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 20}),
+        new Retreat(5, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.CAN_BERSERK], {retreatDistance: 10}),
         new Berserk(3, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.CAN_BERSERK])];
 
         let actionAmbush = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
-        new Move(2, [hw4_Statuses.LOW_HEALTH], [hw4_Statuses.IN_RANGE], {inRange: 20}),
+        new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 100}),
         new Retreat(5, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
         new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
@@ -576,12 +576,12 @@ export default class hw4_scene extends Scene {
             }
             else if (data.type === "custom_enemy1") {
                 weapon = this.createWeapon("weak_pistol")
-                actions = actionCrazed;
+                actions = actionAmbush;
                 range = 100;
             }
             else if (data.type === "custom_enemy2") {
                 weapon = this.createWeapon("knife")
-                actions = actionAmbush;
+                actions = actionCrazed;
                 range = 20;
             }
 
