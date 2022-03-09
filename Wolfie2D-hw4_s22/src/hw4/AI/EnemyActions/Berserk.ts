@@ -5,7 +5,7 @@ import Emitter from "../../../Wolfie2D/Events/Emitter";
 import GameNode from "../../../Wolfie2D/Nodes/GameNode";
 import EnemyAI from "../EnemyAI";
 
-// HOMEWORK 4 - TODO
+// HOMEWORK 4 - TODO (DONE)
 /**
  * Implement berserk action so that the enemy gains 1.5x speed, 2x damage, and has a 2x lower cooldown on attacking.
  * Note that you'll also need to manage how enemies use this action in the initializeEnemies method in hw4_scene.

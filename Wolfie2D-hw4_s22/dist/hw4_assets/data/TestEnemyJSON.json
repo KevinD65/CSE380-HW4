@@ -79,16 +79,16 @@
       "type": "custom_enemy1"
     },
     {
-      "position": [1472, 128],
+      "position": [1664, 192],
       "mode": "guard",
-      "guardPosition": [1472, 128],
+      "guardPosition": [1664, 192],
       "health": 10,
       "type": "custom_enemy1"
     },
     {
-      "position": [1568, 288],
+      "position": [1696, 352],
       "mode": "guard",
-      "guardPosition": [1568, 288],
+      "guardPosition": [1696, 352],
       "health": 10,
       "type": "custom_enemy1"
     },

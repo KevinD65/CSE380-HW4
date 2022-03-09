@@ -22,7 +22,7 @@ export default class Retreat extends GoapAction {
         this.retreatDistance = options.retreatDistance;
     }
 
-    // HOMEWORK 4 - TODO
+    // HOMEWORK 4 - TODO (DONE)
     /**
      * Implement retreat action so that the enemy constantly moves away from the player until they get past the retreatDistance. If they succesfully move 
      * far away enough, they heal back to their max health. The low health status should NOT be removed, once an enemy is low health, that remains
@@ -40,10 +40,10 @@ export default class Retreat extends GoapAction {
             let playerPosition = injuredEnemy.lastPlayerPos;
             let distBetween = Math.sqrt(Math.pow(playerPosition.x - injuredEnemyPosition.x, 2) + Math.pow(playerPosition.y - injuredEnemyPosition.y, 2));
 
-            if(injuredEnemy.currentStatus.includes(hw4_Statuses.LOW_HEALTH)){ //IF WE ARE NOT INJURED, DON'T RETREAT
+            /*if(!injuredEnemy.currentStatus.includes(hw4_Statuses.LOW_HEALTH)){ //IF WE ARE NOT INJURED, DON'T RETREAT
                 return null;
-            }
-            else if(distBetween >= this.retreatDistance){ //IF WE HAVE MOVED FAR ENOUGH AWAY, STOP RETREATING
+            }*/
+            if(distBetween >= this.retreatDistance){ //IF WE HAVE MOVED FAR ENOUGH AWAY, STOP RETREATING
                 injuredEnemy.health = injuredEnemy.maxHealth; //RESET TO MAX HEALTH
                 return this.effects;
             }

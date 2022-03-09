@@ -510,7 +510,7 @@ export default class hw4_scene extends Scene {
         new Berserk(1, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
 
-        // HOMEWORK 4 - TODO
+        // HOMEWORK 4 - TODO (DONE)
         /**
          * To help facillate testing the proper sequence of actions that your AI should take, since it can be hard visually,
          *  I've created some test methods you can use to determine whether your AI is behaving correctly. 
