@@ -253,7 +253,7 @@ export default class hw4_scene extends Scene {
         return closetEnemy;
     }
 
-    // HOMEWORK 4 - TODO
+    // HOMEWORK 4 - TODO (DONE)
     /**
      * This function spawns in all of the items in "items.json"
      * 
@@ -327,7 +327,7 @@ export default class hw4_scene extends Scene {
         }
     }
 
-    // HOMEWORK 4 - TODO
+    // HOMEWORK 4 - TODO (DONE)
     /**
      * Change positions of the player characters to whatever fits your map
      */
@@ -340,7 +340,7 @@ export default class hw4_scene extends Scene {
         // Create the players
         this.playerCharacters = Array(2);
         this.playerCharacters[0] = this.add.animatedSprite("player1", "primary");
-        this.playerCharacters[0].position.set(4*16, 62*16);
+        this.playerCharacters[0].position.set(34*16, 61*16);
         this.playerCharacters[0].addPhysics(new AABB(Vec2.ZERO, new Vec2(8, 8)));
         //First player is melee based, starts off with a knife and is short ranged
         this.playerCharacters[0].addAI(PlayerController,
@@ -361,7 +361,7 @@ export default class hw4_scene extends Scene {
 
         //Second player is ranged based, long range and starts with pistol
         this.playerCharacters[1] = this.add.animatedSprite("player2", "primary");
-        this.playerCharacters[1].position.set(2*16, 62*16);
+        this.playerCharacters[1].position.set(33*16, 61*16);
         this.playerCharacters[1].addPhysics(new AABB(Vec2.ZERO, new Vec2(8, 8)));
         this.playerCharacters[1].addAI(PlayerController,
             {
@@ -380,7 +380,7 @@ export default class hw4_scene extends Scene {
     }
 
     /**
-     * // HOMEWORK 4 - TODO
+     * // HOMEWORK 4 - TODO (DONE)
      * This function creates the navmesh for the game world.
      * 
      * It reads in information in the navmesh.json file.
@@ -426,7 +426,7 @@ export default class hw4_scene extends Scene {
         this.navManager.addNavigableEntity(hw4_Names.NAVMESH, navmesh);
     }
 
-    // HOMEWORK 4 - TODO
+    // HOMEWORK 4 - TODO (DONE)
     /**
      * Here is where we initalize all enemies that are spawned in the scene, based off the enemy.json you'll create based on your own tilemap. 
      * The format for the json file is:
@@ -495,17 +495,19 @@ export default class hw4_scene extends Scene {
         let actionKnife = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
         new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 20}),
         new Retreat(4, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
-        new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [])];
+        new Berserk(1, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
+        //TRY TO MOVE FIRST, THEN GO BERSERK, THEN ATTACK, AND THEN RETREAT
         let actionCrazed = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
-        new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 20}),
-        new Retreat(5, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.CAN_BERSERK], {retreatDistance: 10}),
-        new Berserk(3, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.CAN_BERSERK])];
+        new Move(1, [], [hw4_Statuses.IN_RANGE], {inRange: 20}),
+        new Retreat(4, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 10}),
+        new Berserk(2, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
+        //TRY TO BERSERK FIRST, RETREAT, ATTACK, AND THEN MOVE
         let actionAmbush = [new AttackAction(3, [hw4_Statuses.IN_RANGE], [hw4_Statuses.REACHED_GOAL]),
-        new Move(2, [], [hw4_Statuses.IN_RANGE], {inRange: 100}),
-        new Retreat(5, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
-        new Berserk(3, [hw4_Statuses.LOW_HEALTH, hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
+        new Move(4, [], [hw4_Statuses.IN_RANGE], {inRange: 100}),
+        new Retreat(2, [hw4_Statuses.CAN_RETREAT], [hw4_Statuses.REACHED_GOAL], {retreatDistance: 200}),
+        new Berserk(1, [hw4_Statuses.CAN_BERSERK], [hw4_Statuses.REACHED_GOAL])];
 
 
         // HOMEWORK 4 - TODO
